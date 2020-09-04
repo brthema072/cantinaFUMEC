@@ -1,0 +1,123 @@
+<div class="modal fade" id="modal-xl" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Cadastro de categorias</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form [formGroup]="categoryFormGroup" (ngSubmit)="onCategoryFormSubmit()">
+            <div class="modal-body">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Título da categoria</label>
+                        <input type="text" class="form-control" placeholder="Título" formControlName="cardTitle">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Sub Título da categoria</label>
+                        <input type="text" class="form-control" placeholder="Sub Título" formControlName="cardSubtitle">
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Insira a URL da sua imagem</label>
+                        <input type="text" class="form-control" placeholder="URL da imagem da categoria" formControlName="imagem">
+                      </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="submit" class="btn btn-block btn-primary btn-lg" [disabled]="!categoryFormGroup.valid">Salvar</button>
+            </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Categorias</h1>
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-xl">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<table class="table table-bordered bg-light">
+    <thead>
+      <tr>
+        <th>Imagem</th>
+        <th>Título</th>
+        <th>Sub Título</th>
+        <th>Total Produtos</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let cat of categories">
+            <tr>
+                <td [routerLink]="['/produtos/categoria', cat.id]" class="trClick">
+                    <img src="{{cat.imagem}}" alt="categoryImage" class="img">
+                </td>
+                <td [routerLink]="['/produtos/categoria', cat.id]" class="trClick">{{cat.cardTitle}}</td>
+                <td [routerLink]="['/produtos/categoria', cat.id]" class="trClick">{{cat.cardSubtitle}}</td>
+                <td [routerLink]="['/produtos/categoria', cat.id]" class="trClick">{{cat.menu.length}}</td>
+                <td class="project-actions text-right">
+                  <span class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-editCategory" (click)="editCategory(cat)">
+                      <i class="fas fa-pencil-alt"></i>
+                  </span>
+                  <span class="btn btn-danger btn-sm" (click)="removeCategory(cat)">
+                    <i class="fas fa-trash"></i>
+                  </span>
+              </td>
+            </tr>
+        </ng-container>
+     
+    </tbody>
+</table>
+
+<div class="modal fade" id="modal-editCategory" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Editar categoria</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form [formGroup]="categoryFormGroup" (ngSubmit)="onPutCategoryFormSubmit()">
+          <div class="modal-body">
+              <div class="card-body">
+                  <div class="form-group">
+                      <label for="exampleInputEmail1">Título da categoria</label>
+                      <input type="text" class="form-control" placeholder="Título" formControlName="cardTitle">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Sub Título da categoria</label>
+                      <input type="text" class="form-control" placeholder="Sub Título" formControlName="cardSubtitle">
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Insira a URL da sua imagem</label>
+                      <input type="text" class="form-control" placeholder="URL da imagem da categoria" formControlName="imagem">
+                    </div>
+              </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+              <button type="submit" class="btn btn-block btn-primary btn-lg" [disabled]="!categoryFormGroup.valid">Salvar</button>
+          </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-4" *ngFor="let prod of products">
+    <!-- Widget: user widget style 1 -->
+    <div class="card card-widget widget-user">
+      <!-- Add the bg color to the header using any of the bg-* classes -->
+      <div class="widget-user-header bg-info prodClick" [routerLink]="['/produto', prod.id]">
+        <h3 class="widget-user-username text-right">{{prod.name}}</h3>
+        <h5 class="widget-user-desc text-right">R$ {{prod.price}}</h5>
+      </div>
+      <div class="widget-user-image">
+        <img class="img-circle img" src="{{prod.imagePath}}" alt="User Avatar">
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-sm-4 border-right">
+            <div class="description-block">
+            
+            </div>
+            <!-- /.description-block -->
+          </div>
+          <!-- /.col -->
+          <div class="col-sm-4 border-right">
+            <div class="description-block">
+              
+            </div>
+            <!-- /.description-block -->
+          </div>
+          <!-- /.col -->
+          <div class="col-sm-4">
+            <div class="description-block">
+              
+            </div>
+            <!-- /.description-block -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+    </div>
+    <!-- /.widget-user -->
+  </div>
+  <!-- /.col -->
+</div>

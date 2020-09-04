@@ -1,0 +1,29 @@
+<!-- Site wrapper -->
+<div class="wrapper" *ngIf="authService.isAuthenticated()">
+
+    <app-header></app-header>
+  
+    <!-- Main Sidebar Container -->
+    <app-sidebar></app-sidebar>  
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <!-- /.container-fluid -->
+      
+      <!-- Main content -->
+      <section class="content">
+        
+  
+        <router-outlet></router-outlet>
+        
+  
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <app-footer></app-footer>
+</div>
+  <!-- ./wrapper -->
+  
+<router-outlet *ngIf="!authService.isAuthenticated()"></router-outlet>
+  

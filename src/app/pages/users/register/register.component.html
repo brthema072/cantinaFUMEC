@@ -1,0 +1,98 @@
+<img src="{{url}}" alt="">
+<div class="register-box">
+  <div class="register-logo">
+    <a href="../../index2.html"><b>Cantina</b>FUMEC</a>
+  </div>
+
+  <div class="card">
+    <div class="card-body register-card-body">
+      <p class="login-box-msg">Registrar novo usuário</p>
+      
+      <form [formGroup]="userFormBuilder" (ngSubmit)="onUserFormBuilderSubmit()">
+        
+        <code *ngIf="userFormBuilder.controls.name.hasError('required')">*Nome obrigatório</code>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Nome completo" formControlName="name">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <code *ngIf="userFormBuilder.controls.email.hasError('required') || userFormBuilder.controls.email.hasError('email')">*E-mail obrigatório</code>
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" placeholder="E-mail" formControlName="email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <code *ngIf="userFormBuilder.controls.cpf.hasError('required') || userFormBuilder.controls.cpf.hasError('minlength')">*CPF obrigatório</code>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="CPF" formControlName="cpf" maxlength="11">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-id-card"></span>
+            </div>
+          </div>
+        </div>
+        <code *ngIf="userFormBuilder.controls.phoneNumber.hasError('required') || userFormBuilder.controls.phoneNumber.hasError('minlength')">*Telefone obrigatório</code>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Número de telefone" formControlName="phoneNumber" maxlength="11">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-phone"></span>
+            </div>
+          </div>
+        </div>
+        <code *ngIf="userFormBuilder.controls.photoUrl.hasError('required')">*Imagem obrigatória</code>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="URL da imagem de perfil" formControlName="photoUrl">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-images"></span>
+            </div>
+          </div>
+        </div>
+        <code *ngIf="userFormBuilder.controls.location.hasError('required')">*Cidade obrigatória</code>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Cidade" formControlName="location">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-thumbtack"></span>
+            </div>
+          </div>
+        </div>
+        <code *ngIf="userFormBuilder.controls.password.hasError('required') || userFormBuilder.controls.password.hasError('minlength')">*Senha obrigatória</code>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Senha" formControlName="password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <code *ngIf="userFormBuilder.controls.rePassword.hasError('required') || userFormBuilder.controls.rePassword.hasError('minlength')">*Senha obrigatória</code>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Redigite a senha" formControlName="rePassword">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="!userFormBuilder.valid">Register</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <a routerLink="/login" class="text-center">Já tenho uma conta</a>
+    </div>
+    <!-- /.form-box -->
+  </div><!-- /.card -->
+</div>
